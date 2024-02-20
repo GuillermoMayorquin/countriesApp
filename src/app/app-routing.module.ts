@@ -19,6 +19,10 @@ const routes: Routes = [
     component: ContactPageComponent
   },
   {
+    path: "countries",
+    loadChildren: () => import('./countries/countries.module').then(m => m.CountriesModule)
+  },
+  {
     path: "**",
     redirectTo: "home"
   },
@@ -35,3 +39,5 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 // ? Aqui se definen todas las rutas que se usaran en nuestro sitio se debe definir el path y el componente que se utilizara en esa ruta
+// ? En el path 'countries' en vez de el component se pone el metodo loadChildren y se sigue la sintaxis importando el modulo de donde saldran las rutas hijas
+
