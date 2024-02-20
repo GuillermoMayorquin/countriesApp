@@ -6,6 +6,7 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SearchBoxComponent } from './components/search-box/search-box.component';
 
 
 
@@ -14,6 +15,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     AboutPageComponent,
     ContactPageComponent,
     HomePageComponent,
+    SearchBoxComponent,
     SidebarComponent,
   ],
   imports: [
@@ -24,9 +26,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     AboutPageComponent,
     ContactPageComponent,
     HomePageComponent,
+    SearchBoxComponent,
     SidebarComponent,
   ],
 })
 export class SharedModule { }
 
 // ? Aqui es el modulo donde estan los componentes que se usaran en todo el sitio
+// ? Se exporta el SearchBox para que pueda ser usado en otros componentes de otros modulos
