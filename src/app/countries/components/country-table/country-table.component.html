@@ -1,0 +1,43 @@
+<div *ngIf="countries.length === 0; else table" class="alert alert-warning text-center">
+  No hay paises que mostrar
+</div>
+
+
+
+<ng-template #table>
+  <table class="table table-hover text-center">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Icono</th>
+        <th>Bandera</th>
+        <th>Nombre</th>
+        <th>Capital</th>
+        <th>Poblacion</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let country of countries; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>
+          {{ country.flag }}
+        </td>
+        <td>
+          <img [src]="country.flags.svg" [alt]="country.name.common">
+        </td>
+        <td>{{ country.name.common }}</td>
+        <td>{{ country.capital }}</td>
+        <td>{{ country.population | number }}</td>
+        <td>
+          <a href="#">Ver más</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</ng-template>
+
+
+<!-- ? Aqui se crea la tabla que se mandara a llamar en los componentes by-...  -->
+<!-- ? El ngIf mostrara la alerta si no se encontro ningun pais con la busqueda del usuario en el else mostrara el ng-template al cual le pusimos como referencia local #table -->
