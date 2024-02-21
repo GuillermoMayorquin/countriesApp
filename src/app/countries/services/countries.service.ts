@@ -1,6 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+
+import { Observable, catchError, of } from 'rxjs';
+
 import { Country } from '../interfaces/country';
 
 @Injectable({providedIn: 'root'})
@@ -11,8 +13,13 @@ export class CountriesService {
   constructor(private http: HttpClient) { }
 
   searchByCapital(term: string): Observable<Country[]>{
+
     const url = `${this._apiUrl}/capital/${ term }`
+
     return this.http.get<Country[]>(url)
+    .pipe(
+      catchError(() => of([]))
+    )
 
    }
 
@@ -20,3 +27,4 @@ export class CountriesService {
 }
 
 // ? Aqui se crea el servicio y se crea el metodo searchByCapital que es un Observable para consumir la api y retorna el url
+// ? Se crea el .pipe con el catch error para regresar un arreglo vacio cuando se tenga un error en la introduccion de datos
