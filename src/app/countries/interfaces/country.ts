@@ -121,3 +121,5 @@ export interface PostalCode {
   format: string;
   regex:  string;
 }
+
+// ? Se crea la interfaz copiando la respuesta en postman a las capitales y pegandolo mediante la extension PasteJsonAsCode

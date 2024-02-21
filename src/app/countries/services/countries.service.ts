@@ -18,3 +18,5 @@ export class CountriesService {
 
 
 }
+
+// ? Aqui se crea el servicio y se crea el metodo searchByCapital que es un Observable para consumir la api y retorna el url
