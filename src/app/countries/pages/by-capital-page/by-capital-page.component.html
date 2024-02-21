@@ -14,9 +14,16 @@
 <div class="row">
   <div class="col">
     <!-- Tabla de Resultados -->
+    <hr>
+    <ul>
+      <li *ngFor="let country of countries">
+        {{ country.capital }} - {{country.population}}
+      </li>
+    </ul>
   </div>
 </div>
 
 
 <!-- ? Se agrega el input de placeholder al shared search box para poder personalizarlo -->
 <!-- ? Se agrega el output a los atributos de la etiqueta shared search box con el output que definimos en el search-box.component.ts entre parentesis y asignandole el metodo que definimos en el by-capital-page.component.ts y como argumento le pasamos el $event  -->
+<!-- ? Se agrega el ngFor al list item para que se traiga los nombres del input de busqueda-->

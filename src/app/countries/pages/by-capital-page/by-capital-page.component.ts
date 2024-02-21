@@ -1,4 +1,6 @@
 import { Component, } from '@angular/core';
+import { CountriesService } from '../../services/countries.service';
+import { Country } from '../../interfaces/country';
 
 @Component({
   selector: 'countries-by-capital-page',
@@ -7,10 +9,17 @@ import { Component, } from '@angular/core';
 })
 export class ByCapitalPageComponent {
 
+  public countries: Country[] = []
+
+  constructor(private countriesService: CountriesService){}
 
   searchByCapital(term: string){
-    console.log("Desde ByCapitalPage");
-    console.log({ term });
+    this.countriesService.searchByCapital( term )
+    .subscribe( countries => {
+      this.countries = countries
+    })
   }
 
 }
+
+// ? Se inyecta el servicio en el constructor y se modifica el metodo searchByCapital para mandar llamar el metodo del mismo nombre que esta en el servicio y se añade el .subscribe para que se reciba la informacion en el network
