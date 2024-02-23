@@ -12,6 +12,14 @@ export class CountriesService {
 
   constructor(private http: HttpClient) { }
 
+  searchCountryByAlphaCode(code: string): Observable<Country[]>{
+    const url = `${this._apiUrl}/alpha/${ code }`
+    return this.http.get<Country[]>(url)
+    .pipe(
+      catchError(() => of([]))
+    )
+  }
+
   searchByCapital(term: string): Observable<Country[]>{
 
     const url = `${this._apiUrl}/capital/${ term }`
@@ -22,7 +30,7 @@ export class CountriesService {
     )
    };
 
-   searchByCountry(term: string) {
+   searchByCountry(term: string): Observable<Country[]> {
   const url = `${this._apiUrl}/name/${ term }`
     return this.http.get<Country[]>(url)
     .pipe(
@@ -30,7 +38,7 @@ export class CountriesService {
     )
    };
 
-   searchByRegion(term: string) {
+   searchByRegion(term: string): Observable<Country[]> {
     const url = `${this._apiUrl}/region/${ term }`
       return this.http.get<Country[]>(url)
       .pipe(
@@ -44,3 +52,4 @@ export class CountriesService {
 // ? Aqui se crea el servicio y se crea el metodo searchByCapital que es un Observable para consumir la api y retorna el url
 // ? Se crea el .pipe con el catch error para regresar un arreglo vacio cuando se tenga un error en la introduccion de datos
 // ? Se crean los otros dos servicios para pais y region para consumir la API
+//  ? Se crea el metodo searchByAlphaCode en donde se adapta el codigo para consumir los alphaCode de los paises
