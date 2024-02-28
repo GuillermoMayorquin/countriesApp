@@ -5,16 +5,16 @@ import { switchMap } from 'rxjs';
 import { Country } from '../../interfaces/country';
 
 @Component({
-  selector: 'countries-country-page',
+  selector   : 'countries-country-page',
   templateUrl: './country-page.component.html',
-  styles: ``
+  styles     : ``
 })
 export class CountryPageComponent implements OnInit {
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
+    private activatedRoute  : ActivatedRoute,
+    private router          : Router,
     private countriesService: CountriesService,
-    ) {}
+    ) {  }
 
     public country?: Country;
 
