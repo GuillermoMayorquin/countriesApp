@@ -9,17 +9,21 @@ import { Country } from '../../interfaces/country';
 })
 export class ByCapitalPageComponent {
 
-  public countries: Country[] = []
+  public countries: Country[] = [];
 
-  constructor(private countriesService: CountriesService){}
+  public isLoading: boolean = false;
+
+  constructor(private countriesService: CountriesService) {}
 
   searchByCapital(term: string){
-    this.countriesService.searchByCapital( term )
-    .subscribe( countries => {
-      this.countries = countries
-    })
-  }
-
-}
+    this.isLoading = true;
+    this.countriesService.searchByCapital( term ).subscribe(
+        (countries) => {
+        this.countries = countries;
+        this.isLoading = false;
+      }
+    );
+  };
+};
 
 // ? Se inyecta el servicio en el constructor y se modifica el metodo searchByCapital para mandar llamar el metodo del mismo nombre que esta en el servicio y se añade el .subscribe para que se reciba la informacion en el network
